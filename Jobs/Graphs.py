@@ -39,27 +39,27 @@ class Graphs:
         dL = DataLoader()
         np_covariates_X, np_covariates_Y = dL.preprocess_for_graphs(train_path)
         ps_train_set = dL.convert_to_tensor(np_covariates_X, np_covariates_Y)
-        ps_list_nn = self.__train_propensity_net_NN(ps_train_set, device)
+        # ps_list_nn = self.__train_propensity_net_NN(ps_train_set, device)
         ps_list_SAE = self.__train_propensity_net_SAE(ps_train_set, device)
 
-        ps_list_LR = self.__train_propensity_net_LR(np_covariates_X, np_covariates_Y)
-        ps_list_LR_lasso = self.__train_propensity_net_LR_Lasso(np_covariates_X, np_covariates_Y)
+        # ps_list_LR = self.__train_propensity_net_LR(np_covariates_X, np_covariates_Y)
+        # ps_list_LR_lasso = self.__train_propensity_net_LR_Lasso(np_covariates_X, np_covariates_Y)
 
-        print(len(ps_list_nn))
-        print(len(ps_list_SAE))
-        print(len(ps_list_LR))
-        print(len(ps_list_LR_lasso))
-        
-        self.draw_ps_scatter_plots_all(ps_list_nn, ps_list_SAE, ps_list_LR, ps_list_LR_lasso)
-        
-        self.draw_ps_scatter_plots(ps_list_nn, "PD")
-        self.draw_ps_scatter_plots(ps_list_SAE, "SAE")
-        self.draw_ps_scatter_plots(ps_list_LR, "LR")
-        self.draw_ps_scatter_plots(ps_list_LR_lasso, "LR Lasso")
-        
-        self.draw_ps_scatter_plots_sae(ps_list_nn, ps_list_SAE, x_label="PD", y_label="SAE")
-        self.draw_ps_scatter_plots_sae(ps_list_LR, ps_list_SAE, x_label="LR", y_label="SAE")
-        self.draw_ps_scatter_plots_sae(ps_list_LR_lasso, ps_list_SAE, x_label="LR_Lasso", y_label="SAE")
+        # print(len(ps_list_nn))
+        # print(len(ps_list_SAE))
+        # print(len(ps_list_LR))
+        # print(len(ps_list_LR_lasso))
+        #
+        # self.draw_ps_scatter_plots_all(ps_list_nn, ps_list_SAE, ps_list_LR, ps_list_LR_lasso)
+        #
+        # self.draw_ps_scatter_plots(ps_list_nn, "PD")
+        # self.draw_ps_scatter_plots(ps_list_SAE, "SAE")
+        # self.draw_ps_scatter_plots(ps_list_LR, "LR")
+        # self.draw_ps_scatter_plots(ps_list_LR_lasso, "LR Lasso")
+        #
+        # self.draw_ps_scatter_plots_sae(ps_list_nn, ps_list_SAE, x_label="PD", y_label="SAE")
+        # self.draw_ps_scatter_plots_sae(ps_list_LR, ps_list_SAE, x_label="LR", y_label="SAE")
+        # self.draw_ps_scatter_plots_sae(ps_list_LR_lasso, ps_list_SAE, x_label="LR_Lasso", y_label="SAE")
 
     def __train_propensity_net_NN(self, ps_train_set, device):
         train_parameters_NN = {
